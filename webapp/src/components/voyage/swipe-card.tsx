@@ -19,6 +19,8 @@ interface SwipeCardProps {
     down: { label: string; hint: string };
   };
   onSwipe: (choice: SwipeChoice) => void;
+  /** Ring color around the card. Default: rythme. */
+  ringClassName?: string;
 }
 
 const easeOutCubic = [0.33, 1, 0.68, 1] as const;
@@ -28,6 +30,7 @@ export function SwipeCard({
   context,
   choices,
   onSwipe,
+  ringClassName = "ring-rythme-100",
 }: SwipeCardProps) {
   const [exiting, setExiting] = useState<SwipeChoice | null>(null);
   const x = useMotionValue(0);
@@ -84,7 +87,7 @@ export function SwipeCard({
         }
         transition={{ duration: 0.25, ease: easeOutCubic }}
         whileTap={{ cursor: "grabbing" }}
-        className="relative cursor-grab touch-none select-none rounded-3xl bg-lumiere-100 p-8 shadow-lg ring-1 ring-rythme-100 sm:p-10"
+        className={`relative cursor-grab touch-none select-none rounded-3xl bg-lumiere-100 p-8 shadow-lg ring-1 ${ringClassName} sm:p-10`}
       >
         {/* Decision indicators (overlays during drag) */}
         <motion.div
