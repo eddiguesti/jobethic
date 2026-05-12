@@ -60,3 +60,4 @@ webapp/.env.*
 # ─── Local agent context ─────────────────────
 CLAUDE.md
 AGENTS.md
+.claude/
