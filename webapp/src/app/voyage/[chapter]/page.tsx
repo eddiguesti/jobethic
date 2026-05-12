@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { ChapterPlayer } from "@/components/voyage/chapter-player";
+import { RoomScene } from "@/components/voyage-v2/room-scene";
 import { CHAPTERS, getChapter, type ChapterSlug } from "@/lib/chapters";
 import { SCENARIOS_BY_CHAPTER } from "@/lib/voyage/scenarios";
+import { ROOM_OBJECTS } from "@/lib/voyage/house-config";
 
 const PLAYABLE_SLUGS: ChapterSlug[] = [
   "rythme",
@@ -11,6 +13,9 @@ const PLAYABLE_SLUGS: ChapterSlug[] = [
   "environnement",
   "pression",
 ];
+
+/** Pièces déjà reconstruites en mode immersif (avec objets). */
+const IMMERSIVE_ROOMS: ChapterSlug[] = ["rythme"];
 
 interface RouteParams {
   chapter: string;
@@ -42,11 +47,17 @@ export default async function ChapterPage({
   const { chapter: slug } = await params;
   if (!PLAYABLE_SLUGS.includes(slug as ChapterSlug)) notFound();
 
-  const chapter = getChapter(slug as ChapterSlug);
-  const scenarios = SCENARIOS_BY_CHAPTER[chapter.slug];
+  const typedSlug = slug as ChapterSlug;
+  const chapter = getChapter(typedSlug);
 
-  // Next chapter for continuity hint
-  const currentIndex = CHAPTERS.findIndex((c) => c.slug === chapter.slug);
+  // Mode immersif (pièce reconstruite avec objets interactifs)
+  if (IMMERSIVE_ROOMS.includes(typedSlug) && ROOM_OBJECTS[typedSlug]) {
+    return <RoomScene slug={typedSlug} />;
+  }
+
+  // Mode fallback : ChapterPlayer classique
+  const scenarios = SCENARIOS_BY_CHAPTER[typedSlug];
+  const currentIndex = CHAPTERS.findIndex((c) => c.slug === typedSlug);
   const nextChapter =
     currentIndex < CHAPTERS.length - 1 ? CHAPTERS[currentIndex + 1] : undefined;
 

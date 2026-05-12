@@ -1,11 +1,11 @@
-import { VoyageIndex } from "./voyage-index";
+import { HouseMap } from "@/components/voyage-v2/house-map";
 
 export const metadata = {
-  title: "Le Voyage — Découvre qui tu es professionnellement",
+  title: "La Maison — Le Voyage",
   description:
-    "Un voyage de 6 semaines, 5 min par jour, pour découvrir comment tu travailles vraiment. Pas un test. Une expérience.",
+    "Explore les pièces de ta tête. Chaque pièce révèle une dimension de ta manière de travailler. Une expérience interactive, pas un test.",
 };
 
 export default function VoyagePage() {
-  return <VoyageIndex />;
+  return <HouseMap />;
 }

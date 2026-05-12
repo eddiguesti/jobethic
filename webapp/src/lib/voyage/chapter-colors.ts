@@ -19,6 +19,7 @@ export interface ChapterColorTokens {
   text900_80: string;
   text900_60: string;
   text700: string;
+  text500: string;
   ring100: string;
   ring200: string;
   border100: string;
@@ -36,6 +37,7 @@ export const CHAPTER_COLORS: Record<ChapterColorKey, ChapterColorTokens> = {
     text900_80: "text-rythme-900/80",
     text900_60: "text-rythme-900/60",
     text700: "text-rythme-700",
+    text500: "text-rythme-500",
     ring100: "ring-rythme-100",
     ring200: "ring-rythme-200",
     border100: "border-rythme-100",
@@ -51,6 +53,7 @@ export const CHAPTER_COLORS: Record<ChapterColorKey, ChapterColorTokens> = {
     text900_80: "text-comm-900/80",
     text900_60: "text-comm-900/60",
     text700: "text-comm-700",
+    text500: "text-comm-500",
     ring100: "ring-comm-100",
     ring200: "ring-comm-200",
     border100: "border-comm-100",
@@ -66,6 +69,7 @@ export const CHAPTER_COLORS: Record<ChapterColorKey, ChapterColorTokens> = {
     text900_80: "text-autonomie-900/80",
     text900_60: "text-autonomie-900/60",
     text700: "text-autonomie-700",
+    text500: "text-autonomie-500",
     ring100: "ring-autonomie-100",
     ring200: "ring-autonomie-200",
     border100: "border-autonomie-100",
@@ -81,6 +85,7 @@ export const CHAPTER_COLORS: Record<ChapterColorKey, ChapterColorTokens> = {
     text900_80: "text-limites-900/80",
     text900_60: "text-limites-900/60",
     text700: "text-limites-700",
+    text500: "text-limites-500",
     ring100: "ring-limites-100",
     ring200: "ring-limites-200",
     border100: "border-limites-100",
@@ -96,6 +101,7 @@ export const CHAPTER_COLORS: Record<ChapterColorKey, ChapterColorTokens> = {
     text900_80: "text-environnement-900/80",
     text900_60: "text-environnement-900/60",
     text700: "text-environnement-700",
+    text500: "text-environnement-500",
     ring100: "ring-environnement-100",
     ring200: "ring-environnement-200",
     border100: "border-environnement-100",
@@ -111,6 +117,7 @@ export const CHAPTER_COLORS: Record<ChapterColorKey, ChapterColorTokens> = {
     text900_80: "text-pression-900/80",
     text900_60: "text-pression-900/60",
     text700: "text-pression-700",
+    text500: "text-pression-500",
     ring100: "ring-pression-100",
     ring200: "ring-pression-200",
     border100: "border-pression-100",
@@ -126,6 +133,7 @@ export const CHAPTER_COLORS: Record<ChapterColorKey, ChapterColorTokens> = {
     text900_80: "text-neutral-900/80",
     text900_60: "text-neutral-900/60",
     text700: "text-neutral-700",
+    text500: "text-neutral-500",
     ring100: "ring-neutral-100",
     ring200: "ring-neutral-200",
     border100: "border-neutral-100",
