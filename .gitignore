@@ -1,0 +1,62 @@
+# ─── OS / Editor ─────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+!.vscode/settings.json
+.idea/
+
+# ─── Source originaux (gardés en local seulement) ───
+# Décommente si tu préfères ne pas pousser les .odt/.docx originaux
+# *.odt
+# *.docx
+
+# ─── Scratch / extraction ────────────────────
+_extracted/
+*.tmp
+
+# ─── Dépendances (webapp) ────────────────────
+webapp/node_modules/
+webapp/.pnp.*
+webapp/.yarn/*
+!webapp/.yarn/patches
+!webapp/.yarn/plugins
+!webapp/.yarn/releases
+!webapp/.yarn/versions
+
+# ─── Build outputs (webapp) ──────────────────
+webapp/.next/
+webapp/out/
+webapp/build/
+webapp/dist/
+webapp/*.tsbuildinfo
+webapp/next-env.d.ts
+
+# ─── Tests / Coverage ────────────────────────
+webapp/coverage/
+
+# ─── Logs ────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ─── Env / Secrets ───────────────────────────
+.env
+.env.*
+!.env.example
+webapp/.env
+webapp/.env.*
+!webapp/.env.example
+
+# ─── Cache ───────────────────────────────────
+.turbo/
+.cache/
+.eslintcache
+.stylelintcache
+
+# ─── Local agent context ─────────────────────
+CLAUDE.md
+AGENTS.md
