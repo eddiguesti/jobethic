@@ -1,0 +1,215 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1salon0001"]
+
+[ext_resource type="Script" path="res://scripts/salon.gd" id="1_salon"]
+[ext_resource type="PackedScene" uid="uid://b1player0001" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="Script" path="res://scripts/interactive_object.gd" id="3_obj"]
+
+[sub_resource type="RectangleShape2D" id="WallH_shape"]
+size = Vector2(960, 20)
+
+[sub_resource type="RectangleShape2D" id="WallV_shape"]
+size = Vector2(20, 540)
+
+[sub_resource type="RectangleShape2D" id="Obj_shape"]
+size = Vector2(40, 40)
+
+[sub_resource type="LabelSettings" id="Label_obj"]
+font_size = 12
+font_color = Color(0.1, 0.1, 0.1, 1)
+outline_size = 3
+outline_color = Color(1, 1, 1, 1)
+
+[node name="Salon" type="Node2D"]
+script = ExtResource("1_salon")
+
+[node name="Floor" type="ColorRect" parent="."]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.937, 0.918, 0.875, 1)
+
+[node name="RoomLabel" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 400.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+text = "🛋  Le Salon  ·  Ton tempo intérieur"
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="WallNorth" type="StaticBody2D" parent="Walls"]
+position = Vector2(480, 60)
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallNorth"]
+shape = SubResource("WallH_shape")
+
+[node name="Visual" type="ColorRect" parent="Walls/WallNorth"]
+offset_left = -480.0
+offset_top = -10.0
+offset_right = 480.0
+offset_bottom = 10.0
+color = Color(0.157, 0.157, 0.157, 1)
+
+[node name="WallSouth" type="StaticBody2D" parent="Walls"]
+position = Vector2(480, 530)
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallSouth"]
+shape = SubResource("WallH_shape")
+
+[node name="Visual" type="ColorRect" parent="Walls/WallSouth"]
+offset_left = -480.0
+offset_top = -10.0
+offset_right = 480.0
+offset_bottom = 10.0
+color = Color(0.157, 0.157, 0.157, 1)
+
+[node name="WallWest" type="StaticBody2D" parent="Walls"]
+position = Vector2(10, 295)
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallWest"]
+shape = SubResource("WallV_shape")
+
+[node name="Visual" type="ColorRect" parent="Walls/WallWest"]
+offset_left = -10.0
+offset_top = -245.0
+offset_right = 10.0
+offset_bottom = 245.0
+color = Color(0.157, 0.157, 0.157, 1)
+
+[node name="WallEast" type="StaticBody2D" parent="Walls"]
+position = Vector2(950, 295)
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallEast"]
+shape = SubResource("WallV_shape")
+
+[node name="Visual" type="ColorRect" parent="Walls/WallEast"]
+offset_left = -10.0
+offset_top = -245.0
+offset_right = 10.0
+offset_bottom = 245.0
+color = Color(0.157, 0.157, 0.157, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(480, 360)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Phone" type="Area2D" parent="Objects"]
+position = Vector2(220, 380)
+script = ExtResource("3_obj")
+object_id = "phone"
+label = "Ton téléphone"
+scenario_ids = PackedStringArray("dimanche-soir", "interruption")
+chapter_slug = "rythme"
+
+[node name="Shape" type="CollisionShape2D" parent="Objects/Phone"]
+shape = SubResource("Obj_shape")
+
+[node name="Visual" type="ColorRect" parent="Objects/Phone"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.231, 0.510, 0.965, 1)
+
+[node name="Prompt" type="Label" parent="Objects/Phone"]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = -28.0
+label_settings = SubResource("Label_obj")
+text = "Ton téléphone"
+horizontal_alignment = 1
+
+[node name="Calendar" type="Area2D" parent="Objects"]
+position = Vector2(480, 200)
+script = ExtResource("3_obj")
+object_id = "calendar"
+label = "Le calendrier"
+scenario_ids = PackedStringArray("deadline-method", "sprint-vs-marathon")
+chapter_slug = "rythme"
+
+[node name="Shape" type="CollisionShape2D" parent="Objects/Calendar"]
+shape = SubResource("Obj_shape")
+
+[node name="Visual" type="ColorRect" parent="Objects/Calendar"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.063, 0.725, 0.506, 1)
+
+[node name="Prompt" type="Label" parent="Objects/Calendar"]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = -28.0
+label_settings = SubResource("Label_obj")
+text = "Le calendrier"
+horizontal_alignment = 1
+
+[node name="Window" type="Area2D" parent="Objects"]
+position = Vector2(780, 150)
+script = ExtResource("3_obj")
+object_id = "window"
+label = "La fenêtre"
+scenario_ids = PackedStringArray("energy-peak")
+chapter_slug = "rythme"
+
+[node name="Shape" type="CollisionShape2D" parent="Objects/Window"]
+shape = SubResource("Obj_shape")
+
+[node name="Visual" type="ColorRect" parent="Objects/Window"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.961, 0.451, 0.086, 1)
+
+[node name="Prompt" type="Label" parent="Objects/Window"]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = -28.0
+label_settings = SubResource("Label_obj")
+text = "La fenêtre"
+horizontal_alignment = 1
+
+[node name="Door" type="Area2D" parent="Objects"]
+position = Vector2(720, 430)
+script = ExtResource("3_obj")
+object_id = "door"
+label = "La porte"
+scenario_ids = PackedStringArray("weekend-push")
+chapter_slug = "rythme"
+
+[node name="Shape" type="CollisionShape2D" parent="Objects/Door"]
+shape = SubResource("Obj_shape")
+
+[node name="Visual" type="ColorRect" parent="Objects/Door"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.545, 0.361, 0.169, 1)
+
+[node name="Prompt" type="Label" parent="Objects/Door"]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = -28.0
+label_settings = SubResource("Label_obj")
+text = "La porte"
+horizontal_alignment = 1
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Help" type="Label" parent="HUD"]
+offset_left = 32.0
+offset_top = 480.0
+offset_right = 600.0
+offset_bottom = 520.0
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "WASD ou flèches pour bouger · E pour interagir · clique sur un objet aussi"

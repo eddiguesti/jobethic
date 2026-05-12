@@ -213,7 +213,14 @@ export function HouseMap() {
               transition={{ duration: 0.4, delay: 1.2, ease: easeOutCubic }}
             >
               <foreignObject x="2" y="98" width="96" height="12">
-                <div className="flex h-full items-center justify-between text-[3px] sm:text-[2.5px]">
+                <div className="flex h-full items-center justify-between gap-1 text-[3px] sm:text-[2.5px]">
+                  <Link
+                    href={HOUSE_DOORS.jeu.href}
+                    className="rounded-md border border-rythme-300 bg-rythme-50 px-2 py-1 text-rythme-700 hover:border-rythme-500 hover:text-rythme-900"
+                    style={{ fontSize: "9px" }}
+                  >
+                    {HOUSE_DOORS.jeu.label}
+                  </Link>
                   <Link
                     href={HOUSE_DOORS.entretien.href}
                     className="rounded-md border border-neutral-300 bg-lumiere-100 px-2 py-1 text-neutral-700 hover:border-neutral-400 hover:text-neutral-900"

@@ -1,6 +1,6 @@
 # 04 — Le Profil Profond : "Le Voyage"
 
-> *"Le profil profond, c'est notre vrai produit. L'IA, le matching, l'app — tout le reste n'est que conséquence."*
+
 
 ## 1. Philosophie
 

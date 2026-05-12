@@ -14,7 +14,22 @@ Thumbs.db
 
 # ─── Scratch / extraction ────────────────────
 _extracted/
+_godot/
 *.tmp
+
+# ─── Godot project (game/) ────────────────────
+# Sources GDScript et scènes sont commit, mais les artefacts non
+game/.godot/
+game/.import/
+game/export/
+game/*.translation
+game/*.tmp
+
+# ─── Godot HTML5 export output (regenerated per export) ───
+# Si tu veux que Vercel serve le jeu via Vercel build,
+# enlève la ligne ci-dessous et commit l'export.
+# Pour l'instant : exporter manuellement depuis Godot puis push.
+# webapp/public/godot/
 
 # ─── Dépendances (webapp) ────────────────────
 webapp/node_modules/

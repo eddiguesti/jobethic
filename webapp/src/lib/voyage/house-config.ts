@@ -108,7 +108,7 @@ export const HOUSE_ROOMS: RoomConfig[] = [
 ];
 
 /**
- * Pièces "spéciales" — front door + back door.
+ * Pièces "spéciales" — front door + back door + jeu.
  */
 export const HOUSE_DOORS = {
   synthese: {
@@ -119,6 +119,11 @@ export const HOUSE_DOORS = {
   entretien: {
     label: "Entretien IA (optionnel)",
     href: "/voyage/entretien",
+    color: "rythme" as const,
+  },
+  jeu: {
+    label: "🎮 Mode jeu (Godot proto)",
+    href: "/voyage/jeu",
     color: "rythme" as const,
   },
 };
