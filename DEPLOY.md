@@ -62,11 +62,34 @@ Le fichier [`webapp/vercel.json`](webapp/vercel.json) est déjà commit avec :
 
 ```json
 {
-  "regions": ["cdg1", "fra1"]
+  "regions": ["cdg1"]
 }
 ```
 
-→ Toutes les fonctions serverless tournent à Paris + Frankfurt. **Aucune donnée ne transite par les US.**
+→ Toutes les fonctions serverless tournent à Paris. **Aucune donnée ne transite par les US.**
+
+> ⚠️ **Contrainte plan Hobby (gratuit) :** une seule région autorisée à la fois.
+> Pour ajouter Frankfurt (`fra1`) en redondance EU, il faudra passer au plan **Pro** ($20/user/mo).
+> Le défaut projet (`serverlessFunctionRegion`) est aussi fixé à `cdg1` via l'API.
+
+### 1.2 bis — Debug via API Vercel
+
+Le token API Vercel est stocké dans `webapp/.env.local` (gitignored).
+Pour debug une deploy qui ne se déclenche pas :
+
+```bash
+# Lister les deployments récents
+curl -H "Authorization: Bearer $VERCEL_API_TOKEN" \
+  "https://api.vercel.com/v6/deployments?projectId=prj_SisMO3JYRDH6N8Hklciwhh5GTMLg&limit=10"
+
+# Forcer un deploy manuel pour un commit spécifique
+curl -X POST -H "Authorization: Bearer $VERCEL_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"jobethic","target":"production","gitSource":{"type":"github","repoId":1236724145,"ref":"main","sha":"<sha>"},"projectSettings":{"framework":"nextjs"}}' \
+  https://api.vercel.com/v13/deployments
+```
+
+Si l'API renvoie une erreur en réponse au POST, c'est qu'**aucun deployment n'a été créé** — typiquement à cause d'une config vercel.json invalide pour le plan actuel (ex: `regions` multiples sur Hobby).
 
 ### 1.3 Headers de sécurité
 
